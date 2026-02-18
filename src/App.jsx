@@ -3,12 +3,19 @@ import Components from "./assets/components.png";
 import { CORE_CONCEPTS } from "./data.js";
 import CoreConceptsCall from "./components/CoreConceptsCall.jsx";
 import Examples from "./components/Examples.jsx";
+import { useState } from "react";
+import { EXAMPLES } from "./data.js";
 
 function App() {
+  const [buttonClickedName, setButtonClickedName] = useState('Seven');
   
   function handleClick(buttonName){
-        console.log(buttonName);
+        setButtonClickedName(buttonName);
+        console.log(buttonClickedName);
     }
+
+    const comp="This is my Component";
+    const jsx= "this is my JSX";
 
     console.log('App component rendered');
 
@@ -39,6 +46,8 @@ function App() {
           <Examples onSelect={() => handleClick('Props')}>Props</Examples>
           <Examples onSelect={() => handleClick('State')}>State</Examples>
           </menu>
+          {buttonClickedName === 'Components' ? comp : ''}
+          {buttonClickedName === 'JSX' ? jsx : ''}
         </section>
       </main>
     </div>
